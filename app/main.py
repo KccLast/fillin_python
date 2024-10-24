@@ -13,6 +13,7 @@ app = FastAPI()
 origins = [
     "http://localhost:8085",  # SpringBoot 서버 도메인
     # 필요한 다른 도메인을 추가
+    "http://13.124.251.210:8000"
 ]
 
 # CORS 미들웨어 추가
