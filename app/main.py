@@ -51,7 +51,7 @@ async def kmeansClustering(n_clusters: int, request: Request):
 
     # 군집 레이블 추가
     data['Cluster'] = kmeans.labels_
-    print(data[['answerDate', 'answerContent', 'Cluster']].head())
+    print(data[['answerSeq', 'participantSeq', 'answerDate', 'answerContent', 'Cluster']].head())
 
     # PCA로 차원 축소
     pca = PCA(n_components=2)
@@ -61,6 +61,8 @@ async def kmeansClustering(n_clusters: int, request: Request):
     df_pca = pd.DataFrame(X_pca, columns=['PCA1', 'PCA2'])
     df_pca['Cluster'] = kmeans.labels_
     df_pca['answerContent'] = data['answerContent'] # answerContent를 추가
+    df_pca['answerSeq'] = data['answerSeq'] # answerSeq 추가
+    df_pca['participantSeq'] = data['participantSeq'] # participantSeq 추가
     df_pca['answerDate'] = data['answerDate'] # answerDate 추가
 
     print(df_pca)
