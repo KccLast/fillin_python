@@ -18,12 +18,21 @@ origins = [
 ]
 
 # CORS 미들웨어 추가
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,  # 허용할 도메인
+#     allow_credentials=True,
+#     allow_methods=["*"],  # 모든 HTTP 메서드 허용 (GET, POST 등)
+#     allow_headers=["*"],  # 모든 헤더 허용
+# )
+
+# 모든 출처에 대해 CORS 요청 허용
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # 허용할 도메인
+    allow_origins=["*"],  # 모든 도메인에서의 요청 허용
     allow_credentials=True,
-    allow_methods=["*"],  # 모든 HTTP 메서드 허용 (GET, POST 등)
-    allow_headers=["*"],  # 모든 헤더 허용
+    allow_methods=["*"],  # 모든 메서드(GET, POST 등)를 허용
+    allow_headers=["*"],  # 모든 헤더를 허용
 )
 
 @app.get("/")
